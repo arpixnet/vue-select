@@ -544,7 +544,8 @@
       onChange: {
         type: Function,
         default: function (val) {
-          this.$emit('input', val)
+          this.$emit('input', val);
+          if (this.cleanOnSelecting) this.mutableValue = null;
         }
       },
 
@@ -680,6 +681,15 @@
         type: String,
         default: 'auto'
       },
+
+      /**
+       * Determines whether the selected value will remain in selected-option or not.
+       * @type {Boolean}
+       */
+      cleanOnSelecting: {
+        type: Boolean,
+        default: false
+      }
     },
 
     data() {
